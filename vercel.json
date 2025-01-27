@@ -5,9 +5,12 @@
   },
   "routes": [
     {
-      "src": "/api/tutorial.php",
-      "headers": { "Location": "/tutorial" },
-      "status": 307
+      "src": "/secureproxy.php",
+      "dest": "/api/secureproxy.php"
+    },
+    {
+      "src": "/api/(.*\\.php)$",
+      "dest": "/api/$1"
     },
     {
       "src": "/",
@@ -18,8 +21,8 @@
       "dest": "/api/tutorial.php"
     },
     {
-      "src": "/public/(.*)",
-      "dest": "/$1"
+      "src": "/(.*\\.(css|js|png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot))$",
+      "dest": "/public/$1"
     }
   ]
 }
